@@ -1,0 +1,5 @@
+# Guide source — cloned locally by scripts/check_submodule.py, not committed
+xp_pgrs_unofficial_guide/
+
+# Generated index — rebuilt by scripts/build_index.py when guide version changes
+cache/guide_index.json
