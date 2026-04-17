@@ -1,5 +1,7 @@
 # XP PGRS Unofficial Guide Agent Skill
 
+[English Version](./README_en.md) | 中文版
+
 这是一个专为大语言模型 Agent（如基于 OpenClaw 协议的个人助理）设计的技能（Skill）。它允许 Agent 高效、准确地访问和检索[西浦博士生非官方攻略](https://github.com/xp-pgrs-unofficial-guide/xp_pgrs_unofficial_guide)（XP PGRS Unofficial Guide）。
 
 ## 🌟 核心特性
@@ -19,6 +21,7 @@ xp_pgrs_unofficial_guide-skill/
 ├── scripts/
 │   ├── check_submodule.py         ← 环境初始化：负责将原始指南项目克隆到本地
 │   ├── check_version.py           ← 版本网关：对比本地 cache 索引与源码 Git HEAD
+│   ├── update_skill.py            ← 技能自更新：负责安全拉取与覆盖本机技能代码
 │   └── build_index.py             ← 解析引擎：将三层 LaTeX 源码解析并提浓缩为 JSON 索引
 └── xp_pgrs_unofficial_guide/      ← [不直接提交] 运行时动态 Clone 的原始指南代码库
 ```
@@ -50,3 +53,13 @@ git -C xp_pgrs_unofficial_guide pull
 ```
 
 在随后的下一次对话中，Agent 的 `check_version.py` 例行检查会立刻发现变动（返回 `STALE`），并自动启动无缝的索引重组。
+
+## 🤖 技能代码自更新
+
+除了底层的攻略数据，Agent 解析使用的“技能逻辑”（即这个仓库内的 Python 脚本等代码）也会迭代进化。你可以直接让 Agent 帮你执行，或者手动运行：
+
+```bash
+python scripts/update_skill.py
+```
+
+这个工具会自动比对远端版本并下载更新，**绝对不会**覆盖你本地的 `cache` 索引或 `xp_pgrs_unofficial_guide` LaTeX 源码文件，非常安全。
