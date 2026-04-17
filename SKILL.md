@@ -12,7 +12,7 @@ compatibility:
     - python
 metadata:
   author: xp-pgrs-unofficial-guide
-  version: "1.0.0"
+  version: "0.1.0"
   language: zh-CN
   source: https://github.com/xp-pgrs-unofficial-guide/xp_pgrs_unofficial_guide
   license: see xp_pgrs_unofficial_guide/LICENSE
@@ -174,10 +174,10 @@ Images appear as `\includegraphics[...]{<path>}` inside a `figure` environment:
 
 ---
 
-## Updating the Guide
+## Updating the Guide Source
 
 The guide source is **not** automatically updated — the user controls their own
-version. If the user asks for the latest content, run:
+version. If the user asks for the latest guide content, run:
 
 ```
 git -C xp_pgrs_unofficial_guide pull
@@ -185,6 +185,21 @@ git -C xp_pgrs_unofficial_guide pull
 
 After pulling, `check_version.py` will report `STALE` on the next run, and
 `build_index.py` will rebuild the index automatically.
+
+---
+
+## Updating the Skill Itself
+
+The agent skill codebase (the python parsing scripts, this file, etc.) can also
+receive updates to improve intelligence. If the user asks to update the skill
+itself, or if you suspect your scripts are outdated, run:
+
+```
+python scripts/update_skill.py
+```
+
+This will safely fetch the newest release from the community repository without
+overwriting the local guide or the cache.
 
 ---
 
